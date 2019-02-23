@@ -12,15 +12,21 @@ export default {
       dll: false,
       routes: {
         exclude: [
-        
           /models\//,
           /services\//,
           /model\.(t|j)sx?$/,
           /service\.(t|j)sx?$/,
-        
           /components\//,
         ],
       },
     }],
   ],
+  // 配置代理，能通过Restful方式访问
+  "proxy": {
+    "/api": {
+      "target": "http://jsonplaceholder.typicode.com/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api": "" }
+    }
+  }
 }
